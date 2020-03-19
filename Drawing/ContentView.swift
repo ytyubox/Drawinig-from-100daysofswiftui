@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
+	@State private var petalOffset: Double = -20
+	@State private var petalWidset: Double = 100
+	@State private var petalCount: CGFloat = 8
     var body: some View {
-        Text("Hello, World!")
+		VStack {
+			Flower(petalOffset: petalOffset, petalWidth: petalWidset,petalCount: petalCount)
+				.fill(Color.red, style: FillStyle(eoFill: true))
+				.padding()
+			Text("Count")
+			Slider(value: $petalCount, in: 1...20)
+			Text("Offset")
+			Slider(value: $petalOffset, in: -40...40)
+				.padding([.horizontal, .bottom])
+			Text("Width")
+			Slider(value: $petalWidset, in: 0...100)
+				.padding(.horizontal)
+		}
     }
 }
 
